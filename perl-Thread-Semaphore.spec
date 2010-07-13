@@ -1,5 +1,5 @@
 %define upstream_name    Thread-Semaphore
-%define upstream_version 2.09
+%define upstream_version 2.11
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
