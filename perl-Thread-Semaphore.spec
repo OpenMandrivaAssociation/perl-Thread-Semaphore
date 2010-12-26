@@ -1,9 +1,9 @@
 %define upstream_name    Thread-Semaphore
-%define upstream_version 2.11
+%define upstream_version 2.12
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 4
+Release:    %mkrel 1
 
 Summary:    Thread-safe semaphores
 License:    GPL+ or Artistic
