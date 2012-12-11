@@ -1,21 +1,21 @@
 %define upstream_name    Thread-Semaphore
 %define upstream_version 2.12
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Thread-safe semaphores
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Thread/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Thread-safe semaphores
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Thread/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Scalar::Util)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(threads::shared)
-BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	perl-devel
+BuildRequires:	perl(Scalar::Util)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(threads::shared)
+BuildArch:	noarch
 
 %description
 Semaphores provide a mechanism to regulate access to resources. Unlike
@@ -31,22 +31,55 @@ so threads can reserve or return multiple resources at once.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 2.120.0-2mdv2011.0
++ Revision: 656976
+- rebuild for updated spec-helper
+
+* Sun Dec 26 2010 Guillaume Rousse <guillomovitch@mandriva.org> 2.120.0-1mdv2011.0
++ Revision: 625284
+- update to new version 2.12
+
+* Sat Nov 13 2010 Jérôme Quelin <jquelin@mandriva.org> 2.110.0-4mdv2011.0
++ Revision: 597203
+- rebuild
+
+* Wed Jul 28 2010 Jérôme Quelin <jquelin@mandriva.org> 2.110.0-3mdv2011.0
++ Revision: 562437
+- rebuild
+
+* Tue Jul 27 2010 Jérôme Quelin <jquelin@mandriva.org> 2.110.0-2mdv2011.0
++ Revision: 561027
+- rebuild
+
+* Tue Jul 13 2010 Jérôme Quelin <jquelin@mandriva.org> 2.110.0-1mdv2011.0
++ Revision: 552247
+- update to 2.11
+
+* Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 2.90.0-1mdv2010.0
++ Revision: 401506
+- rebuild using %%perl_convert_version
+- fixed license field
+
+* Mon May 11 2009 Jérôme Quelin <jquelin@mandriva.org> 2.09-1mdv2010.0
++ Revision: 374410
+- import perl-Thread-Semaphore
+
+
+* Mon May 11 2009 cpan2dist 2.09-1mdv
+- initial mdv release, generated with cpan2dist
 
