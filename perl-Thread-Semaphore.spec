@@ -1,15 +1,13 @@
 %define upstream_name    Thread-Semaphore
-%define upstream_version 2.13
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	2.13
+Release:	2
 
 Summary:	Thread-safe semaphores
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Thread-Semaphore
-Source0:	https://cpan.metacpan.org/authors/id/J/JD/JDHEDDEN/Thread-Semaphore-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/J/JD/JDHEDDEN/Thread-Semaphore-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -29,7 +27,7 @@ filehandles). Increment and decrement amounts aren't fixed at one either,
 so threads can reserve or return multiple resources at once.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -73,8 +71,7 @@ make test
 
 * Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 2.90.0-1mdv2010.0
 + Revision: 401506
-- rebuild using %%perl_convert_version
-- fixed license field
+- rebuild using %2.13 fixed license field
 
 * Mon May 11 2009 Jérôme Quelin <jquelin@mandriva.org> 2.09-1mdv2010.0
 + Revision: 374410
