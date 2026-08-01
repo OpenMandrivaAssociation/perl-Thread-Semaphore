@@ -2,7 +2,7 @@
 %define upstream_version 2.13
 Name:		perl-%{upstream_name}
 Version:	2.13
-Release:	2
+Release:	3
 
 Summary:	Thread-safe semaphores
 License:	GPL+ or Artistic
